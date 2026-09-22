@@ -16,7 +16,7 @@ export default async function Pricing() {
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
           <Link href="/"><Logo /></Link>
           <nav className="flex items-center gap-1 text-sm">
-            {user ? <Link href="/dashboard" className="btn-ghost">Dashboard</Link> : <Link href="/login" className="btn-ghost">Log in</Link>}
+            {user ? <Link href="/" className="btn-ghost">Open Tailor</Link> : <Link href="/login" className="btn-ghost">Log in</Link>}
           </nav>
         </div>
       </header>

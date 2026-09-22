@@ -8,7 +8,7 @@ import { GoogleButton } from "../google";
 export const metadata = { title: "Sign up" };
 
 export default async function Signup() {
-  if (await getUser()) redirect("/dashboard");
+  if (await getUser()) redirect("/");
   return (
     <>
       <h1 className="text-xl font-semibold tracking-tight text-zinc-900">Start hunting free</h1>

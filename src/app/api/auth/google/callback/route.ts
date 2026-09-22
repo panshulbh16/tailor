@@ -35,5 +35,5 @@ export async function GET(req: NextRequest) {
     track("signup", user.id, { method: "google" });
   }
   await createSession(user.id);
-  return NextResponse.redirect(`${appUrl}${user.onboarded ? "/dashboard" : "/onboarding"}`);
+  return NextResponse.redirect(appUrl);
 }

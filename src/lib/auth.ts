@@ -59,13 +59,12 @@ export const getUser = cache(async (): Promise<User | null> => {
 export async function requireUser(): Promise<User> {
   const user = await getUser();
   if (!user) redirect("/login");
-  if (!user.onboarded) redirect("/onboarding");
   return user;
 }
 
 export async function requireAdmin(): Promise<User> {
   const user = await requireUser();
-  if (!user.is_admin) redirect("/dashboard");
+  if (!user.is_admin) redirect("/");
   return user;
 }
 
