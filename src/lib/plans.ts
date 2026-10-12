@@ -2,13 +2,18 @@ import { db } from "./db.ts";
 
 const FREE_WEEKLY = 15;
 
+// Free accounts get this many tailors in total before Pro is required; Pro is unlimited. Defined here, not in
+// quota.ts, because PLANS.free.features uses it and billing-check.ts runs this file directly under node, which
+// can't resolve quota.ts's extensionless imports. quota.ts re-exports it.
+export const FREE_TAILORS = 3;
+
 export const PLANS = {
   free: {
     name: "Free",
     price: 0,
     weeklyDiscoveries: FREE_WEEKLY,
     profiles: 1,
-    features: [`${FREE_WEEKLY} new opportunities per week`, "Basic matching", "Basic application tracker", "One search profile"],
+    features: [`${FREE_TAILORS} résumé tailors`, "Honest 0–100 fit score and gap list", "Résumé rewritten for each job", "Edit, copy or download as PDF"],
   },
   pro: {
     name: "Pro",
@@ -17,11 +22,10 @@ export const PLANS = {
     weeklyDiscoveries: Infinity,
     profiles: 5,
     features: [
-      "Unlimited opportunities",
-      "Continuous monitoring",
-      "Daily digest",
-      "Application tracking",
-      "Match explanations on every listing",
+      "Unlimited résumé tailors",
+      "Fit score, gaps and a rewritten résumé for every job",
+      "Edit, copy or download as PDF",
+      "One-time 30-day pass — never auto-renews",
     ],
   },
 } as const;

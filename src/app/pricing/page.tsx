@@ -1,11 +1,19 @@
 import { headers } from "next/headers";
 import Link from "next/link";
 import { getUser } from "@/lib/auth";
-import { billingCurrency, internationalEnabled, PLANS, paymentsConfigured, proPrice } from "@/lib/plans";
+import { billingCurrency, FREE_TAILORS, internationalEnabled, PLANS, paymentsConfigured, proPrice } from "@/lib/plans";
+import { pageMetadata } from "@/lib/site";
 import { Check, Logo } from "@/components/ui";
 import { UpgradeButton } from "@/components/UpgradeButton";
+import { SiteFooter } from "@/components/SiteFooter";
 
-export const metadata = { title: "Pricing" };
+export const metadata = pageMetadata({
+  title: "Pricing",
+  description: paymentsConfigured
+    ? `Tailor pricing: ${FREE_TAILORS} free résumé tailors with a free account, or unlimited with Pro — a ₹${PLANS.pro.prices.INR} one-time 30-day pass that never auto-renews.`
+    : `Tailor pricing: ${FREE_TAILORS} free résumé tailors with a free account. Pro, for unlimited tailors at ₹${PLANS.pro.prices.INR} per 30-day pass, is coming soon — nobody is charged today.`,
+  path: "/pricing",
+});
 
 export default async function Pricing() {
   const user = await getUser();
@@ -23,17 +31,17 @@ export default async function Pricing() {
       <main className="mx-auto max-w-4xl px-6 py-20">
         <div className="text-center">
           <h1 className="text-4xl font-semibold tracking-tight text-zinc-900">Simple pricing</h1>
-          <p className="mt-3 text-zinc-600">{paymentsConfigured ? "Start free. Go Pro when you want unlimited matches and daily digests." : "Free while we're in early access. Pro, for unlimited matches and daily digests, is coming soon."}</p>
+          <p className="mt-3 text-zinc-600">{paymentsConfigured ? "Start free. Go Pro when you want unlimited résumé tailors." : "Free while we're in early access. Pro, for unlimited résumé tailors, is coming soon."}</p>
         </div>
         <div className="mt-14 grid gap-6 md:grid-cols-2">
           <div className="card p-8">
             <h2 className="text-lg font-semibold text-zinc-900">{PLANS.free.name}</h2>
-            <p className="mt-4 text-4xl font-semibold tracking-tight text-zinc-900">₹0<span className="text-base font-normal text-zinc-500">/month</span></p>
+            <p className="mt-4 text-4xl font-semibold tracking-tight text-zinc-900">₹0<span className="text-base font-normal text-zinc-500"> · {FREE_TAILORS} tailors</span></p>
             <ul className="mt-8 space-y-3 text-sm text-zinc-700">
               {PLANS.free.features.map((f) => <li key={f} className="flex gap-3"><Check className="mt-0.5 h-4 w-4 text-zinc-400" />{f}</li>)}
             </ul>
             <div className="mt-8">
-              {user ? <span className="btn-secondary w-full pointer-events-none">{user.subscription_plan === "free" ? "Your current plan" : "Included in Pro"}</span> : <Link href="/signup" className="btn-secondary w-full">Start Hunting Free</Link>}
+              {user ? <span className="btn-secondary w-full pointer-events-none">{user.subscription_plan === "free" ? "Your current plan" : "Included in Pro"}</span> : <Link href="/signup" className="btn-secondary w-full">Start free</Link>}
             </div>
           </div>
           <div className="relative rounded-xl bg-zinc-900 p-8 text-white shadow-[0_24px_60px_-24px_rgba(0,0,0,0.5)]">
@@ -51,6 +59,7 @@ export default async function Pricing() {
         </div>
         <p className="mt-10 text-center text-xs text-zinc-400">{paymentsConfigured ? "Pro is a 30-day pass paid once via Razorpay. It never renews on its own, so you're never charged by surprise." + (internationalEnabled() ? " ₹499 in India, $10 elsewhere." : " Prices in INR.") : "Prices in INR. Pro isn't available to buy yet — nobody will be charged."}{" "}<Link href="/refunds" className="underline hover:text-zinc-700">Refund policy</Link></p>
       </main>
+      <SiteFooter width="max-w-4xl" />
     </div>
   );
 }

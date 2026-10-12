@@ -1,7 +1,12 @@
 import Link from "next/link";
 import { LegalPage } from "@/components/LegalPage";
+import { pageMetadata } from "@/lib/site";
 
-export const metadata = { title: "Privacy Policy" };
+export const metadata = pageMetadata({
+  title: "Privacy Policy",
+  description: "Privacy Policy: what data is collected, why, which processors handle it, the single login cookie, and how long data is kept.",
+  path: "/privacy",
+});
 
 export default function Privacy() {
   return (

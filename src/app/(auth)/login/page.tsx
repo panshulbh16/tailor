@@ -3,9 +3,14 @@ import { redirect } from "next/navigation";
 import { getUser } from "@/lib/auth";
 import { login } from "@/app/actions";
 import { ActionForm } from "@/components/AuthForm";
+import { pageMetadata } from "@/lib/site";
 import { GoogleButton } from "../google";
 
-export const metadata = { title: "Log in" };
+export const metadata = pageMetadata({
+  title: "Log in",
+  description: "Log in to Tailor to score your résumé against a job description, see the gaps, and get a version rewritten for that role.",
+  path: "/login",
+});
 
 export default async function Login() {
   if (await getUser()) redirect("/");

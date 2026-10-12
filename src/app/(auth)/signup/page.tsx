@@ -3,16 +3,22 @@ import { redirect } from "next/navigation";
 import { getUser } from "@/lib/auth";
 import { signup } from "@/app/actions";
 import { ActionForm } from "@/components/AuthForm";
+import { FREE_TAILORS } from "@/lib/plans";
+import { pageMetadata } from "@/lib/site";
 import { GoogleButton } from "../google";
 
-export const metadata = { title: "Sign up" };
+export const metadata = pageMetadata({
+  title: "Sign up free",
+  description: `Create a free Tailor account and get ${FREE_TAILORS} résumé tailors: an honest fit score, the gaps, and your résumé rewritten for the job you want.`,
+  path: "/signup",
+});
 
 export default async function Signup() {
   if (await getUser()) redirect("/");
   return (
     <>
-      <h1 className="text-xl font-semibold tracking-tight text-zinc-900">Start hunting free</h1>
-      <p className="mt-1 text-sm text-zinc-500">Create your account, then tell us what you&apos;re looking for.</p>
+      <h1 className="text-xl font-semibold tracking-tight text-zinc-900">Create your free account</h1>
+      <p className="mt-1 text-sm text-zinc-500">Get {FREE_TAILORS} free résumé tailors. No card needed.</p>
       <div className="mt-6">
         <ActionForm action={signup} submit="Create account" pendingLabel="Creating account…">
           <div><label className="label" htmlFor="name">Name</label><input id="name" name="name" required autoComplete="name" className="input" /></div>

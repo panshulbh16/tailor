@@ -3,7 +3,12 @@ import { requestPasswordReset } from "@/app/actions";
 import { ActionForm } from "@/components/AuthForm";
 import { canEmailAnyone } from "@/lib/email";
 
-export const metadata = { title: "Reset password" };
+// Utility page: kept out of search results (and the sitemap) but crawlable, so the noindex is seen.
+export const metadata = {
+  title: "Reset password",
+  description: "Forgot your Tailor password? Request a link to choose a new one.",
+  robots: { index: false, follow: true },
+};
 
 export default function Forgot() {
   const support = process.env.SUPPORT_EMAIL;

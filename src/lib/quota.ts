@@ -1,7 +1,7 @@
 import { db } from "./db";
+import { FREE_TAILORS } from "./plans";
 
-// Free accounts get this many tailors before Pro is required; Pro is unlimited.
-export const FREE_TAILORS = 3;
+export { FREE_TAILORS };
 
 /** How many free tailors this user has left (Infinity for Pro). */
 export function tailorsLeft(userId: number, plan: string): number {

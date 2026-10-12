@@ -1,8 +1,13 @@
 import Link from "next/link";
 import { LegalPage } from "@/components/LegalPage";
 import { PASS_DAYS } from "@/lib/razorpay";
+import { pageMetadata } from "@/lib/site";
 
-export const metadata = { title: "Cancellation & Refund Policy" };
+export const metadata = pageMetadata({
+  title: "Cancellation & Refund Policy",
+  description: "Pro is a one-time 30-day pass with nothing to cancel. Full refund within 7 days of purchase, no questions asked; how to request one.",
+  path: "/refunds",
+});
 
 const REFUND_WINDOW_DAYS = 7;
 
