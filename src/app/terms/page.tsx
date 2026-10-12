@@ -2,8 +2,13 @@ import Link from "next/link";
 import { LegalPage } from "@/components/LegalPage";
 import { PLANS } from "@/lib/plans";
 import { PASS_DAYS } from "@/lib/razorpay";
+import { pageMetadata } from "@/lib/site";
 
-export const metadata = { title: "Terms of Service" };
+export const metadata = pageMetadata({
+  title: "Terms of Service",
+  description: "Terms of Service: the rules for using the service, your account, the one-time Pro pass and payments via Razorpay, liability, and governing law (India).",
+  path: "/terms",
+});
 
 export default function Terms() {
   return (

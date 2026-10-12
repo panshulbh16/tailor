@@ -1,6 +1,11 @@
 import { LegalPage, supportEmail } from "@/components/LegalPage";
+import { pageMetadata } from "@/lib/site";
 
-export const metadata = { title: "Contact" };
+export const metadata = pageMetadata({
+  title: "Contact",
+  description: "Contact the developer: email support (reply within 2 working days), help with payment problems, and requests for a copy or correction of your data.",
+  path: "/contact",
+});
 
 export default function Contact() {
   const email = supportEmail();

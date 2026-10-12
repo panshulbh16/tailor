@@ -2,11 +2,21 @@ import Link from "next/link";
 import { resetPassword } from "@/app/actions";
 import { ActionForm } from "@/components/AuthForm";
 
-export const metadata = { title: "Choose a new password" };
+// Reset links carry a one-time token in the URL — never index them.
+export const metadata = {
+  title: "Choose a new password",
+  description: "Choose a new password for your Tailor account.",
+  robots: { index: false, follow: false },
+};
 
 export default async function Reset({ searchParams }: { searchParams: Promise<{ token?: string }> }) {
   const { token } = await searchParams;
-  if (!token) return <p className="text-sm text-zinc-600">This link is missing its token. <Link href="/forgot-password" className="font-medium text-zinc-900 hover:underline">Request a new one.</Link></p>;
+  if (!token) return (
+    <>
+      <h1 className="text-xl font-semibold tracking-tight text-zinc-900">Reset link incomplete</h1>
+      <p className="mt-2 text-sm text-zinc-600">This link is missing its token. <Link href="/forgot-password" className="font-medium text-zinc-900 hover:underline">Request a new one.</Link></p>
+    </>
+  );
   return (
     <>
       <h1 className="text-xl font-semibold tracking-tight text-zinc-900">Choose a new password</h1>

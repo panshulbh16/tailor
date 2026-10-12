@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { Logo } from "./ui";
+import { SiteFooter } from "./SiteFooter";
 
 // Every statement on these pages should stay true of the code. If you add a tracker, a data processor,
 // or change pricing, retention or refunds, update the matching page in the same change.
-export const LEGAL_LINKS = [["/terms", "Terms"], ["/privacy", "Privacy"], ["/refunds", "Refunds"], ["/contact", "Contact"]] as const;
 
 export const supportEmail = () => process.env.SUPPORT_EMAIL;
 
@@ -17,10 +17,8 @@ export function LegalPage({ title, updated, children }: { title: string; updated
         <h1 className="text-3xl font-semibold tracking-tight text-zinc-900">{title}</h1>
         <p className="text-sm text-zinc-500">Last updated {updated}</p>
         {children}
-        <nav className="mt-14 flex flex-wrap gap-x-6 gap-y-2 border-t border-zinc-100 pt-6 text-sm text-zinc-500">
-          {LEGAL_LINKS.map(([href, label]) => <Link key={href} href={href} className="hover:text-zinc-900">{label}</Link>)}
-        </nav>
       </main>
+      <SiteFooter width="max-w-3xl" />
     </div>
   );
 }
