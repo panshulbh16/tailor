@@ -1,7 +1,7 @@
 import Anthropic from "@anthropic-ai/sdk";
 
-// Server-only: reads a resume PDF with Claude and returns the search-profile fields it can fill.
-// Scoring stays deterministic (src/lib/ai/index.ts); Claude only drafts the profile the user reviews and saves.
+// Server-only: PDF helpers shared by the tailor route, plus importResume's Claude call that reads a resume PDF
+// into profile fields the user can review and paste.
 
 export const resumeImportConfigured = Boolean(process.env.ANTHROPIC_API_KEY);
 export const RESUME_MAX_BYTES = 5 * 1024 * 1024;

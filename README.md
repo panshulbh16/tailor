@@ -37,4 +37,4 @@ Open http://localhost:3000.
 
 Next.js 15 (App Router, server actions, a streaming route handler) · TypeScript · Tailwind · SQLite via `better-sqlite3` · hand-rolled sessions · Anthropic Claude · Razorpay for Pro.
 
-Built by reusing the engine behind [Opportunity Hunter](https://opportunityhunter.xyz) — same auth, billing, database and Anthropic setup, pointed at a sharper problem.
+Built by reusing the engine of an earlier project — the same auth, billing, database and Anthropic setup, pointed at a sharper problem.

@@ -37,7 +37,7 @@ export function CheckoutButton({ className, label }: { className: string; label:
           order_id: order.orderId,
           amount: order.amount,
           currency: order.currency,
-          name: "Opportunity Hunter",
+          name: "Tailor",
           description: "Pro · 30 days",
           prefill: { name: order.name, email: order.email },
           theme: { color: "#18181b" },

@@ -20,7 +20,7 @@ const resendProvider = (key: string): EmailProvider => ({
       method: "POST",
       headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
       body: JSON.stringify({
-        from: process.env.EMAIL_FROM ?? "Opportunity Hunter <onboarding@resend.dev>",
+        from: process.env.EMAIL_FROM ?? "Tailor <onboarding@resend.dev>",
         to: e.to,
         subject: e.subject,
         text: e.text,
@@ -41,7 +41,7 @@ const gmailProvider = (user: string, pass: string): EmailProvider => ({
   async send(e) {
     const nodemailer = (await import("nodemailer")).default;
     const transport = nodemailer.createTransport({ service: "gmail", auth: { user, pass } });
-    await transport.sendMail({ from: process.env.EMAIL_FROM ?? `Opportunity Hunter <${user}>`, to: e.to, subject: e.subject, text: e.text, html: e.html });
+    await transport.sendMail({ from: process.env.EMAIL_FROM ?? `Tailor <${user}>`, to: e.to, subject: e.subject, text: e.text, html: e.html });
   },
 });
 
