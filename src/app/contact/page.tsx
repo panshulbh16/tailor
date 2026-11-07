@@ -3,15 +3,15 @@ import { pageMetadata } from "@/lib/site";
 
 export const metadata = pageMetadata({
   title: "Contact",
-  description: "Contact the developer: email support (reply within 2 working days), help with payment problems, and requests for a copy or correction of your data.",
+  description: "Contact the developer of Tailor: email support (reply within 2 working days), help with payment problems, and requests to copy, correct or delete your data.",
   path: "/contact",
 });
 
 export default function Contact() {
   const email = supportEmail();
   return (
-    <LegalPage title="Contact" updated="19 September 2026">
-      <p>Opportunity Hunter is run by Panshul Bharadwaj, an individual developer based in India.</p>
+    <LegalPage title="Contact" updated="7 November 2026">
+      <p>Tailor is run by Panshul Bharadwaj, an individual developer based in India.</p>
 
       <h2>Email</h2>
       <p>
@@ -20,10 +20,10 @@ export default function Contact() {
       </p>
 
       <h2>Payment problems</h2>
-      <p>Include the Razorpay payment ID (it starts with <code>pay_</code> and is in your receipt email) and the email address of your Opportunity Hunter account, so we can find your payment quickly.</p>
+      <p>Include the Razorpay payment ID (it starts with <code>pay_</code> and is in your receipt email) and the email address of your Tailor account, so we can find your payment quickly.</p>
 
       <h2>Data requests</h2>
-      <p>To get a copy of your data or have it corrected, email us from the address on your account. You can delete your account yourself at any time from Settings.</p>
+      <p>To get a copy of your data, have it corrected, or delete your account, email us from the address on your account.</p>
     </LegalPage>
   );
 }

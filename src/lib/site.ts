@@ -19,10 +19,10 @@ export const PAGES = [
   { path: "/", updated: "2026-10-12" },
   { path: "/pricing", updated: "2026-10-12" },
   { path: "/signup", updated: "2026-10-12" },
-  { path: "/terms", updated: "2026-09-19" },
-  { path: "/privacy", updated: "2026-09-20" },
+  { path: "/terms", updated: "2026-11-07" },
+  { path: "/privacy", updated: "2026-11-07" },
   { path: "/refunds", updated: "2026-09-19" },
-  { path: "/contact", updated: "2026-09-19" },
+  { path: "/contact", updated: "2026-11-07" },
 ] as const;
 
 /** Accepts the bare token or the whole <meta name="google-site-verification" content="…"> tag Search Console shows. */

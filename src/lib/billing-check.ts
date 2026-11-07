@@ -5,7 +5,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
-const dir = fs.mkdtempSync(path.join(os.tmpdir(), "oh-billing-"));
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), "tailor-billing-"));
 process.env.DATABASE_PATH = path.join(dir, "app.db");
 process.env.RAZORPAY_KEY_SECRET = "key_secret";
 process.env.RAZORPAY_WEBHOOK_SECRET = "hook_secret";
